@@ -614,3 +614,13 @@ td {
     background-color: transparent;
 
 }
+#tableDiv {
+
+    height: 300px;
+    overflow-y: scroll;
+
+}
+#exchange {
+  height: 300px;
+  overflow-y: scroll;
+}
