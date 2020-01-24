@@ -155,7 +155,10 @@ class App extends React.Component {
       this.getAllAccountBuys();
       this.getAllAccountBalance();
 
-
+  }
+  componentDidUpdate(prevProps, prevState) {
+    this.sortTable();
+    this.sortTable2();
   }
  //Get Sell-Orders
  getAllTransactionSell(trans) {
@@ -443,6 +446,74 @@ convertTimestamp(timestamp) {
   time = new Date(time).toGMTString();
   return time;
 }
+sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("order");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[1];
+      y = rows[i + 1].getElementsByTagName("TD")[1];
+      // Check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        // If so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+sortTable2() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("order2");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[1];
+      y = rows[i + 1].getElementsByTagName("TD")[1];
+      // Check if the two rows should switch place:
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        // If so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
 //Table Filter function
 tableFilter() {
    var input, filter, table, tr, td, td2, td3, td4, td5, td6, td7, i, txtValue, txtValue2, txtValue3, txtValue4, txtValue5, txtValue5, txtValue6, txtValue7;
@@ -717,7 +788,8 @@ tableFilter() {
                   </div>
                 </div>
   </div>
-<Table id="" striped bordered hover size="sm">
+  <div id="tableDiv">
+<Table id="order" striped bordered hover size="sm">
   <thead>
     <tr>
       <th>Order</th>
@@ -740,6 +812,7 @@ tableFilter() {
   ))}
   </tbody>
 </Table>
+</div>
   </Card>
 </Col>
     <Col ><br></br>  <Card id="noBorder">
@@ -753,7 +826,8 @@ tableFilter() {
                     </div>
                   </div>
     </div>
-  <Table striped bordered hover size="sm">
+      <div id="tableDiv">
+  <Table id="order2" striped bordered hover size="sm">
     <thead>
       <tr>
       <th>Order</th>
@@ -776,6 +850,7 @@ tableFilter() {
     ))}
     </tbody>
   </Table>
+  </div>
   </Card>
   </Col>
   </Row>
@@ -784,6 +859,7 @@ tableFilter() {
                 <div class="BigS">TRT Exchange</div>
                 <div class="smallEx">HISTORIC BURST / TRT</div>
               </div>
+                <div id="tableDiv2">
                   <table id="exchange" class="table" className='table table-sm table-striped table-bordered table-hover'>
                     <thead>
                       <tr>
@@ -811,6 +887,7 @@ tableFilter() {
                       ))}
                     </tbody>
                   </table>
+                  </div>
                   {/* Site footer */}
  <footer className="site-footer">
    <div className="container">
