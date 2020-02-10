@@ -257,8 +257,8 @@ th {
 }
 .mixed-chart {
 
-    max-height: 250px !important;
-    min-height: 250px !important;
+  max-height: 400px !important;
+  min-height: 400px !important;
 
 }
 #headBuy {
@@ -623,4 +623,12 @@ td {
 #exchange {
   height: 300px;
   overflow-y: scroll;
+}
+.highcharts-container  {
+height: 500px !important
+}
+.highcharts-credits {
+
+    display: none;
+
 }
