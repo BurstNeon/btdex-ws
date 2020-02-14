@@ -554,7 +554,7 @@ sortTable() {
       x = rows[i].getElementsByTagName("TD")[1];
       y = rows[i + 1].getElementsByTagName("TD")[1];
       // Check if the two rows should switch place:
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
         // If so, mark as a switch and break the loop:
         shouldSwitch = true;
         break;
